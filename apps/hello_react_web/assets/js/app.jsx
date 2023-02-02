@@ -25,6 +25,11 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
+import React from "react";
+import ReactDOM from "react-dom";
+import greet from "./hello";
+import Greeter from "./greeter";
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
 
@@ -41,4 +46,9 @@ liveSocket.connect()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
+
+const greeting = document.getElementById("greeting");
+ReactDOM.render(<Greeter name="Phoenix" />, greeting);
+
+document.querySelector("section.phx-hero h1.ts").innerHTML = greet("Phoenix");
 
