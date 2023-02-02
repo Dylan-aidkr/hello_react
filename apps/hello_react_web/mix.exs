@@ -11,7 +11,6 @@ defmodule HelloReactWeb.MixProject do
       lockfile: "../../mix.lock",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -51,7 +50,8 @@ defmodule HelloReactWeb.MixProject do
       {:gettext, "~> 0.18"},
       {:hello_react, in_umbrella: true},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:react_phoenix, "~> 1.3"}
     ]
   end
 

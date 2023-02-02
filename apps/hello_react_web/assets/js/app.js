@@ -20,17 +20,11 @@
 
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
+import "./react/main.js"
 // Establish Phoenix Socket and LiveView configuration.
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
-
-import React from "react";
-import ReactDOM from "react-dom";
-import greet from "./hello";
-import Greeter from "./greeter";
-
-import SendbirdApp from "@sendbird/uikit-react/App";
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
@@ -49,21 +43,5 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
-const greeting = document.getElementById("greeting");
-ReactDOM.render(<Greeter name="Phoenix" />, greeting);
 
-document.querySelector("section.phx-hero h1.ts").innerHTML = greet("Phoenix");
 
-const App = () => {
-    return (
-        <div className="App">
-            <SendbirdApp
-                // Add the two lines below.
-                appId={"__"}   // Specify your Sendbird application ID.
-                userId={"__"}        // Specify your user ID.
-            />
-        </div>
-    );
-};
-
-ReactDOM.render(<App />, document.getElementById("sendbird"));
