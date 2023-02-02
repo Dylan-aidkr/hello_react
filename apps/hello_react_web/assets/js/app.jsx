@@ -30,6 +30,8 @@ import ReactDOM from "react-dom";
 import greet from "./hello";
 import Greeter from "./greeter";
 
+import SendbirdApp from "@sendbird/uikit-react/App";
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
 
@@ -52,3 +54,16 @@ ReactDOM.render(<Greeter name="Phoenix" />, greeting);
 
 document.querySelector("section.phx-hero h1.ts").innerHTML = greet("Phoenix");
 
+const App = () => {
+    return (
+        <div className="App">
+            <SendbirdApp
+                // Add the two lines below.
+                appId={"__"}   // Specify your Sendbird application ID.
+                userId={"__"}        // Specify your user ID.
+            />
+        </div>
+    );
+};
+
+ReactDOM.render(<App />, document.getElementById("sendbird"));

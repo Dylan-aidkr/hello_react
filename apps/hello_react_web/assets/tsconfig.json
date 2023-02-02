@@ -11,5 +11,9 @@
   },
   "exclude": [
     "/node_modules/**/*",
+  ],
+  "include": [
+    "src",
+    "node_modules/@sendbird/uikit-react/index.d.ts"
   ]
 }
